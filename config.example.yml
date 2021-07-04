@@ -1,0 +1,9 @@
+worlds:
+  server: # These shouldn't change
+    ip: 209.240.84.122
+    port: 6650
+
+  account: # Change this to a spare (or main?) account's login information
+    username: fuwn
+    password: somethingsecure22
+    avatar: Vamp.mov

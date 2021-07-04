@@ -1,0 +1,15 @@
+# IDE
+/.idea/
+/munch.iml
+
+# Artifacts
+/*.exe
+/*.exe~
+/*.dll
+/*.so
+/*.dylib
+/*.test
+/*.out
+
+# Development
+/config.yml
