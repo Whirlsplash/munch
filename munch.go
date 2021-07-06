@@ -7,6 +7,7 @@ import (
 	"github.com/Whirlsplash/munch/pkg/config"
 	"github.com/Whirlsplash/munch/pkg/discord"
 	"github.com/Whirlsplash/munch/pkg/server"
+	"github.com/spf13/viper"
 	"sync"
 )
 
@@ -16,18 +17,22 @@ func main() {
 	var wg sync.WaitGroup
 
 	// Discord bot
-	wg.Add(1)
-	go func() {
-		discord.Do()
-		wg.Done()
-	}()
-	wg.Add(1)
+	if viper.GetBool("discord.enable") {
+		wg.Add(1)
+		go func() {
+			discord.Do()
+			wg.Done()
+		}()
+	}
 
 	// Worlds bot
-	go func() {
-		server.Do()
-		wg.Done()
-	}()
+	if viper.GetBool("worlds.enable") {
+		wg.Add(1)
+		go func() {
+			server.Do()
+			wg.Done()
+		}()
+	}
 
 	wg.Wait()
 }
