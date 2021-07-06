@@ -3,6 +3,8 @@
 
 package utils
 
+import "github.com/Whirlsplash/munch/pkg/utilities"
+
 const (
 	AutoServer = iota
 	RoomServer
@@ -28,10 +30,10 @@ func EncodeSessionInitialization(username string, password string, serverType in
 
 	data +=
 		// Username
-		"\x02" + string(rune(len(username))) + ISO88591ToString(username) +
+		"\x02" + string(rune(len(username))) + utilities.ISO88591ToString(username) +
 
 			// Password
-			"\x06" + string(rune(len(password))) + ISO88591ToString(password)
+			"\x06" + string(rune(len(password))) + utilities.ISO88591ToString(password)
 
 	if serverType == AutoServer {
 		data += "\x0c\x01\x31"
@@ -45,7 +47,7 @@ func EncodeBuddyListUpdate(buddy string) []byte {
 	data := "\x01\x1d"
 
 	// Buddy UTF-8 length and UTF-8
-	data += string(rune(len(buddy))) + ISO88591ToString(buddy)
+	data += string(rune(len(buddy))) + utilities.ISO88591ToString(buddy)
 
 	// Buddy "add"
 	data += "\x01"
@@ -61,7 +63,7 @@ func EncodePropertyUpdate(avatar string) []byte {
 	data := "\x01\x0f\x00\x05\x40\x01"
 
 	// Avatar UTF-8 length and UTF-8
-	data += string(rune(len("avatar:"+avatar))) + ISO88591ToString("avatar:"+avatar)
+	data += string(rune(len("avatar:"+avatar))) + utilities.ISO88591ToString("avatar:"+avatar)
 
 	// Data length
 	data = (string(rune(len(data) + 1))) + data
