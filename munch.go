@@ -7,12 +7,14 @@ import (
 	"github.com/Whirlsplash/munch/pkg/config"
 	"github.com/Whirlsplash/munch/pkg/discord"
 	"github.com/Whirlsplash/munch/pkg/server"
+	"github.com/Whirlsplash/munch/pkg/utilities"
 	"github.com/spf13/viper"
 	"sync"
 )
 
 func main() {
 	config.Setup()
+	utilities.SetupSignalHandler()
 
 	var wg sync.WaitGroup
 
