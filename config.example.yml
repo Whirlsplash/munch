@@ -1,5 +1,5 @@
 worlds:
-  enable: false
+  enable: true
 
   server: # These shouldn't change
     ip: 209.240.84.122
@@ -11,6 +11,6 @@ worlds:
     avatar: Vamp.mov
 
 discord:
-  enable: false
+  enable: true
   token: SoMetOKen22
   prefix: m~
