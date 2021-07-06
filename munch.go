@@ -5,10 +5,29 @@ package main
 
 import (
 	"github.com/Whirlsplash/munch/pkg/config"
+	"github.com/Whirlsplash/munch/pkg/discord"
 	"github.com/Whirlsplash/munch/pkg/server"
+	"sync"
 )
 
 func main() {
 	config.Setup()
-	server.Do()
+
+	var wg sync.WaitGroup
+
+	// Discord bot
+	wg.Add(1)
+	go func() {
+		discord.Do()
+		wg.Done()
+	}()
+	wg.Add(1)
+
+	// Worlds bot
+	go func() {
+		server.Do()
+		wg.Done()
+	}()
+
+	wg.Wait()
 }
