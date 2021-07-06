@@ -15,7 +15,7 @@ func Do() {
 		viper.GetString("discord.token"),
 		commands,
 		func(ctx *bot.Context) error {
-			ctx.HasPrefix = bot.NewPrefix("m~")
+			ctx.HasPrefix = bot.NewPrefix(viper.GetString("discord.prefix"))
 
 			return nil
 		},
