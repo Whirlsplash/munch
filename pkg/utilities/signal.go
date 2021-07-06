@@ -23,8 +23,9 @@ func SetupSignalHandler() {
 
 		log.Println("SignalHandler: Killing Munch")
 
-		log.Println("Cleaning up Discord bot application commands")
+		log.Println("Cleaning up Discord bot")
 		discord.CleanupCommands()
+		discord.CleanupBot()
 
 		os.Exit(1)
 	}()

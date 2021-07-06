@@ -22,3 +22,7 @@ func SetupBot() {
 	}
 	defer s.Close()
 }
+
+func CleanupBot() {
+	s.Close()
+}
