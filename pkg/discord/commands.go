@@ -5,6 +5,7 @@ package discord
 
 import (
 	"github.com/bwmarrin/discordgo"
+	"github.com/spf13/viper"
 	"log"
 )
 
@@ -49,5 +50,9 @@ func SetupCommands() {
 		} else {
 			log.Printf("Created command '%v'", v.Name)
 		}
+	}
+
+	if viper.GetBool("discord.account.cleanup_app_commands") {
+		CleanupCommands()
 	}
 }

@@ -16,5 +16,6 @@ discord:
   account:
     token: SoMetOKen22
     app_id: 861756414082678794
+    cleanup_app_commands: false
 
   prefix: m~
