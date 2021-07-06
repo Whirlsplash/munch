@@ -3,21 +3,10 @@
 
 package discord
 
-import (
-	"github.com/diamondburned/arikawa/v2/bot"
-	"github.com/spf13/viper"
-)
-
 func Do() {
-	commands := &Bot{}
+	SetupBot()
+	CleanupCommands()
+	SetupCommands()
 
-	bot.Run(
-		viper.GetString("discord.token"),
-		commands,
-		func(ctx *bot.Context) error {
-			ctx.HasPrefix = bot.NewPrefix(viper.GetString("discord.prefix"))
-
-			return nil
-		},
-	)
+	select {}
 }

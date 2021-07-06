@@ -12,5 +12,9 @@ worlds:
 
 discord:
   enable: true
-  token: SoMetOKen22
+
+  account:
+    token: SoMetOKen22
+    app_id: 861756414082678794
+
   prefix: m~
