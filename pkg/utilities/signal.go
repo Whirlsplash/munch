@@ -4,6 +4,7 @@
 package utilities
 
 import (
+	"github.com/Whirlsplash/munch/pkg/discord"
 	"log"
 	"os"
 	"os/signal"
@@ -11,7 +12,7 @@ import (
 )
 
 func SetupSignalHandler() {
-  // https://stackoverflow.com/a/18158859/14452787
+	// https://stackoverflow.com/a/18158859/14452787
 
 	c := make(chan os.Signal)
 
@@ -20,7 +21,10 @@ func SetupSignalHandler() {
 	go func() {
 		<-c
 
-		log.Println("Killing Munch with SignalHandler")
+		log.Println("SignalHandler: Killing Munch")
+
+		log.Println("Cleaning up Discord bot application commands")
+		discord.CleanupCommands()
 
 		os.Exit(1)
 	}()
