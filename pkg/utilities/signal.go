@@ -11,6 +11,8 @@ import (
 )
 
 func SetupSignalHandler() {
+  // https://stackoverflow.com/a/18158859/14452787
+
 	c := make(chan os.Signal)
 
 	signal.Notify(c, os.Interrupt, syscall.SIGTERM)
